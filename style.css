@@ -1,0 +1,260 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+:root {
+  --ff-heading: "Staatliches", cursive;
+  --ff-text: "Palanquin", sans-serif;
+  --ff-text-lg: "Roboto", sans-serif;
+  --ff-footer: "Open Sans", sans-serif;
+
+  --fs-heading: 4rem;
+  --fs-heading-sm: 2rem;
+  --fs-footer: 1.4rem;
+
+  --fc-text: hsl(274, 84%, 12%);
+  --fc-text-lg: #ffffff;
+  --fc-heading-sm: hsl(232, 17%, 35%);
+
+  --bg-primary: hsl(233, 100%, 97%);
+  --bg-secondary: hsl(218, 17%, 62%);
+  --bg-terciary: hsl(312, 91%, 96%);
+  --bg-heading: hsl(275, 18%, 79%);
+
+  font-size: 62.5%; /* 10px of 16px */
+}
+
+body {
+  background-color: var(--bg-primary);
+}
+
+.page {
+  margin: 0 auto;
+}
+
+header {
+  width: 100vw;
+  height: 28rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: var(--bg-secondary);
+}
+
+header img {
+  margin: 3.2rem 0;
+  width: 13.7rem;
+  height: 13.7rem;
+
+  animation: image-transition 700ms 200ms backwards;
+}
+
+header h1 {
+  font-size: var(--fs-heading);
+  font-family: var(--ff-heading);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+
+  color: #fff;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  text-align: center;
+
+  height: 4.9rem;
+  width: 100%;
+  background-color: var(--bg-heading);
+}
+
+header p {
+  display: none;
+}
+
+main {
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  max-width: clamp(32rem, 20rem + 60vw, 128rem);
+}
+
+main p {
+  text-align: center;
+  margin: 3rem 2rem;
+
+  font-family: var(--ff-text);
+  color: var(--fc-text);
+  font-size: 1.4rem;
+  line-height: 1.5rem;
+}
+
+.content {
+  display: grid;
+  justify-content: center;
+
+  margin: 5rem 0;
+
+  gap: 3.2rem;
+}
+
+.card {
+  position: relative;
+}
+
+.content div:nth-child(1n + 5) {
+  display: none;
+}
+
+.card img {
+  max-width: clamp(22rem, 10rem + 20vw, 25rem);
+
+  transition: all 200ms;
+  animation: topdown 700ms;
+}
+
+.card img:hover {
+  transform: scale(1.1);
+  opacity: 0.6;
+}
+
+.card span {
+  animation: downtop 700ms;
+
+  position: absolute;
+  right: 1.6rem;
+  top: 1.6rem;
+
+  background-color: var(--bg-terciary);
+
+  width: 11.2rem;
+  height: 3.5rem;
+
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card h2 {
+  font-size: var(--fs-heading-sm);
+  font-family: var(--ff-heading);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--fc-heading-sm);
+}
+
+footer {
+  display: none;
+  text-align: center;
+
+  font-family: var(--ff-footer);
+  font-size: var(--fs-footer);
+  color: var(--fc-heading-sm);
+}
+
+@media (min-width: 970px) {
+  main p {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+
+  .content {
+    grid-template-areas:
+      "A B C"
+      "D B E"
+      "D F E";
+  }
+
+  .content div:nth-child(1) {
+    grid-area: A;
+  }
+  .content div:nth-child(2) {
+    grid-area: B;
+  }
+  .content div:nth-child(3) {
+    grid-area: C;
+  }
+  .content div:nth-child(4) {
+    grid-area: D;
+  }
+  .content div:nth-child(5) {
+    display: block;
+    grid-area: E;
+  }
+  .content div:nth-child(6) {
+    display: block;
+    grid-area: F;
+  }
+
+  footer {
+    display: block;
+  }
+}
+
+@media (min-width: 1280px) {
+  body {
+    background-color: #fff;
+  }
+
+  .page {
+    display: flex;
+    align-items: center;
+  }
+
+  header {
+    width: 38rem;
+    height: 100vh;
+  }
+
+  header p {
+    display: block;
+    text-align: center;
+    margin: 4rem auto 0;
+    padding: 0 7rem;
+
+    font-family: var(--ff-text-lg);
+    color: var(--fc-text-lg);
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  main p {
+    display: none;
+  }
+
+  .card span {
+    display: none;
+  }
+
+  .card:hover span {
+    display: flex;
+  }
+}
+
+@keyframes downtop {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes topdown {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
