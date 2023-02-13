@@ -14,6 +14,7 @@
   --fs-heading: 4rem;
   --fs-heading-sm: 2rem;
   --fs-footer: 1.4rem;
+  --fs-text: 1.5rem;
 
   --fc-text: hsl(274, 84%, 12%);
   --fc-text-lg: #ffffff;
@@ -50,8 +51,6 @@ header img {
   margin: 3.2rem 0;
   width: 13.7rem;
   height: 13.7rem;
-
-  animation: image-transition 700ms 200ms backwards;
 }
 
 header h1 {
