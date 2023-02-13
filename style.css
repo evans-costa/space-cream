@@ -97,6 +97,7 @@ main p {
   justify-content: center;
 
   margin: 5rem 0;
+  padding: 0 5rem;
 
   gap: 3.2rem;
 }
@@ -110,7 +111,7 @@ main p {
 }
 
 .card img {
-  max-width: clamp(22rem, 10rem + 20vw, 25rem);
+  max-width: clamp(22rem, 10rem + 20vw, 40rem);
 
   transition: all 200ms;
   animation: topdown 700ms;
