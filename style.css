@@ -77,8 +77,6 @@ main {
 
   display: flex;
   flex-direction: column;
-
-  max-width: clamp(32rem, 20rem + 60vw, 128rem);
 }
 
 main p {
@@ -93,10 +91,9 @@ main p {
 
 .content {
   display: grid;
-  justify-content: center;
+  place-content: center;
 
   margin: 5rem 0;
-  padding: 0 5rem;
 
   gap: 3.2rem;
 }
@@ -105,15 +102,18 @@ main p {
   position: relative;
 }
 
+.content {
+  max-width: 100%;
+}
+
 .content div:nth-child(1n + 5) {
   display: none;
 }
 
 .card img {
-  max-width: clamp(22rem, 10rem + 20vw, 40rem);
-
+  max-width: 30rem;
   transition: all 200ms;
-  animation: topdown 700ms;
+  animation: topdown 700ms 200ms backwards;
 }
 
 .card img:hover {
@@ -122,7 +122,7 @@ main p {
 }
 
 .card span {
-  animation: downtop 700ms;
+  animation: downtop 700ms 200ms backwards;
 
   position: absolute;
   right: 1.6rem;
@@ -156,7 +156,33 @@ footer {
   color: var(--fc-heading-sm);
 }
 
-@media (min-width: 970px) {
+@media (min-width: 500px) {
+  .content {
+    grid-template-areas:
+      "A B"
+      "C B"
+      "C D";
+  }
+
+  .content div:nth-child(1) {
+    grid-area: A;
+  }
+  .content div:nth-child(2) {
+    grid-area: B;
+  }
+  .content div:nth-child(3) {
+    grid-area: D;
+  }
+  .content div:nth-child(4) {
+    grid-area: C;
+  }
+
+  .card img {
+    max-width: clamp(20rem, 15rem + 9vw, 20rem);
+  }
+}
+
+@media (min-width: 700px) {
   main p {
     font-size: 1.6rem;
     line-height: 2.4rem;
@@ -195,7 +221,7 @@ footer {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   body {
     background-color: #fff;
   }
@@ -206,7 +232,7 @@ footer {
   }
 
   header {
-    width: 38rem;
+    width: 34rem;
     height: 100vh;
   }
 
@@ -224,6 +250,10 @@ footer {
 
   main p {
     display: none;
+  }
+
+  .card img {
+    max-width: clamp(20rem, 15rem + 5vw, 30rem);
   }
 
   .card span {
